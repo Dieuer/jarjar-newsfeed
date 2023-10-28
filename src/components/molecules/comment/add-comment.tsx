@@ -2,8 +2,9 @@ import React, { memo, useState } from 'react'
 
 type TAddComment = {
     onSubmit: (comment: string) => void;
+    className?: string;
 }
-export function AddComment({ onSubmit }: TAddComment) {
+export function AddComment({ onSubmit, className }: TAddComment) {
 
     const [comment, setUpdate] = useState<string>('');
 
@@ -17,7 +18,7 @@ export function AddComment({ onSubmit }: TAddComment) {
     }
 
     return (
-        <div>
+        <div className={className}>
             <textarea
                 className='form-control'
                 value={comment}

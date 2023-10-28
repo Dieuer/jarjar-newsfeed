@@ -1,0 +1,15 @@
+.feed-container {
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+}
+
+.feed-title {
+    color: white;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}

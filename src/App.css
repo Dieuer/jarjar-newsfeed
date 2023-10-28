@@ -109,7 +109,7 @@ body {
 
 #root>.container {
   padding: 50px 0;
-  background: white;
+  background: transparent;
 }
 
 .display-1 {

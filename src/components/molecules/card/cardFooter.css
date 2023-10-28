@@ -1,0 +1,9 @@
+.like-button.liked {
+    background-color: green;
+    color: white;
+}
+
+.dislike-button.disliked {
+    background-color: red;
+    color: white;
+}
