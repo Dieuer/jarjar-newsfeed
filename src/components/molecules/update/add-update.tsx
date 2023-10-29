@@ -1,5 +1,5 @@
 import React, { memo, useState } from 'react';
-import { MemoizedButton } from '../../atoms/button/button';
+import { MemoizedTextButton } from '../../atoms/button/text-button';
 import { MemoizedTextarea } from '../../atoms/input/textarea';
 import { Update } from '../../../datatypes/datatypes';
 import { MemoizedTextInput } from '../../atoms/input/textinput';
@@ -7,9 +7,10 @@ import { MemoizedTextInput } from '../../atoms/input/textinput';
 type TAddUpdate = {
   onSubmitUpdate: (title: string, text: string) => void;
   className?: string;
+  style?: React.CSSProperties;
 };
 
-export function AddUpdate({ onSubmitUpdate, className }: TAddUpdate) {
+export function AddUpdate({ onSubmitUpdate, className, style }: TAddUpdate) {
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
 
@@ -22,14 +23,13 @@ export function AddUpdate({ onSubmitUpdate, className }: TAddUpdate) {
   };
 
   const handleUpdateSubmit = () => {
-
     onSubmitUpdate(title, text);
     setTitle('');
     setText('');
   };
 
   return (
-    <div className={className}>
+    <div className={className} style={style}>
       <MemoizedTextInput
         value={title}
         placeholder="Title"
@@ -44,7 +44,7 @@ export function AddUpdate({ onSubmitUpdate, className }: TAddUpdate) {
         className={className}
       />
 
-      <MemoizedButton onClick={handleUpdateSubmit} text="Add update" className={className} />
+      <MemoizedTextButton onClick={handleUpdateSubmit} text="Add update" className={className} />
     </div>
   );
 }

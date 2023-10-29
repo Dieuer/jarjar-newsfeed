@@ -3,11 +3,10 @@ export type Update = {
     author: User;
     title: string;
     text: string;
-    createdDate: string;
+    createdDate: Date;
     comments: Comment[];
     likes: number;
     dislikes: number;
-    //reaction?: UpdateReaction
 }
 
 export type User = {
@@ -17,23 +16,14 @@ export type User = {
     image: string;
 }
 
-export enum UpdateReaction {
-    wow,
-    angry,
-    smile
+export type UpdateReaction = {
+    like: string;
+    dislike: string;
 }
 
 export type Comment = {
     id: string;
+    author: User
     text: string;
-    //username: string;
-    //date: string;
-    //reaction?: CommentReaction;
+    createdDate: Date;
 }
-
-export type CommentReaction = {
-    like: number,
-    dislike: number
-}
-
-

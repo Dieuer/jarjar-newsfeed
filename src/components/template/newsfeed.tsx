@@ -1,9 +1,9 @@
 import React, { memo } from 'react';
 import { MemoizedAddUpdate } from '../molecules/update/add-update';
-import { MemoizedViewUpdate } from '../molecules/update/view-update-card';
+import { MemoizedViewUpdate } from '../organisms/view-update';
 import { Update } from '../../datatypes/datatypes';
 
-import './newsfeedCard.css'
+import './newsfeed.css'
 
 type TNewsFeedProps = {
   title: string;
@@ -14,14 +14,15 @@ type TNewsFeedProps = {
   onDislikeUpdate: (updateId: string) => void;
 }
 
-export function NewsFeedCard({ title, updates, onAddUpdate, onLikeUpdate, onDislikeUpdate, onAddComment }: TNewsFeedProps) {
+export function NewsFeed({ title, updates, onAddUpdate, onLikeUpdate, onDislikeUpdate, onAddComment }: TNewsFeedProps) {
   return (
-    <div className={'feed-container'}>
-      <h1 className='feed-title'> {title} - Newsfeed</h1>
+    <div className={'update-container'}>
+
+      <h1 className='update-title'> {title} - Newsfeed</h1>
 
       <MemoizedAddUpdate onSubmitUpdate={onAddUpdate} />
 
-      <div className="card-container">
+      <div className="update-stream">
         {updates.map((update) => (
           <MemoizedViewUpdate
             key={update.id}
@@ -36,4 +37,4 @@ export function NewsFeedCard({ title, updates, onAddUpdate, onLikeUpdate, onDisl
   );
 }
 
-export const MemoizedNewsFeedCard = React.memo(NewsFeedCard);
+export const MemoizedNewsFeed = React.memo(NewsFeed);

@@ -1,10 +1,18 @@
 import React from "react";
 
-export function TextInput({ value, onChange, placeholder, className }) {
+type TTextInput = {
+    value: string;
+    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    placeholder: string;
+    className?: string;
+    style?: React.CSSProperties;
+}
+
+export function TextInput({ value, onChange, placeholder, className }: TTextInput) {
     return (
         <input
-            type="text" 
-            className={`form-control ${className}`}
+            type="text"
+            className={` text-input form-control ${className ? className : ''}`}
             value={value}
             onChange={onChange}
             placeholder={placeholder}

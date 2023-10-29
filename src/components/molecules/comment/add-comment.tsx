@@ -1,4 +1,6 @@
 import React, { memo, useState } from 'react'
+import { MemoizedTextButton } from '../../atoms/button/text-button';
+import { MemoizedTextarea } from '../../atoms/input/textarea';
 
 type TAddComment = {
     onSubmit: (comment: string) => void;
@@ -18,20 +20,15 @@ export function AddComment({ onSubmit, className }: TAddComment) {
     }
 
     return (
-        <div className={className}>
-            <textarea
-                className='form-control'
+        <div className={`add-comment ${className ? className : ''}`}>
+            <MemoizedTextarea
                 value={comment}
+                placeholder='Comment something...'
+                className='form-control'
                 onChange={handleCommentChange}
-            >
-            </textarea>
+            />
 
-            <button
-                className='btn btn-primary btn-sm pull-right'
-                onClick={handleUpdateSubmit}
-            >
-                Save comment
-            </button>
+            <MemoizedTextButton onClick={handleUpdateSubmit} text="Add comment" className={className} />
         </div>
     )
 }

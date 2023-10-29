@@ -1,0 +1,40 @@
+.view-update {
+    background: url('../../assets/images/darkspace.jpg');
+    margin-top: 10px;
+    width: 100%;
+    border-radius: 20px;
+    padding: 20px;
+    color: white;
+}
+
+.update-title {
+    font-weight: bold;
+    color: yellow;
+}
+
+.local-date {
+    color: #39FF14;
+    font-style: italic;
+}
+
+.user-name {
+    padding-left: 10px;
+}
+
+.user-image {
+    border-radius: 50%;
+}
+
+.update-footer {
+    background-color: #1d1d1d;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.view-update .user-image {
+    width: 100px;
+}
+
+.metadata {
+    display: flex;
+}

@@ -1,0 +1,35 @@
+.view-comment {
+    background-color: white;
+    width: 100%;
+    color: white;
+    padding-left: 15px;
+    padding-top: 10px;
+    border: 2px;
+    border-radius: 20px;
+}
+
+.add-comment {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.view-comment .container-text {
+    color: black;
+}
+
+.view-comment .user-image {
+    width: 50px;
+}
+
+.metadata {
+    display: flex;
+}
+
+.view-comment .user-name {
+    color: black
+}
+
+.view-comment .comment-data .user-image {
+    width: 60px;
+}

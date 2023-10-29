@@ -1,26 +1,28 @@
 import React from 'react'
 import { MemoizedAddComment } from './add-comment';
-import { MemoizedViewComment } from './view-comment';
+import { MemoizedViewComment } from '../../organisms/view-comment';
 import { Comment } from '../../../datatypes/datatypes';
+import { MemoizedBodyContent } from '../../atoms/container/body-content';
 
 type TCommentList = {
     comments: Comment[];
     onComment: (comment: string) => void;
     className?: string;
+    style?: React.CSSProperties;
 }
 export function CommentList({ onComment, comments, className }: TCommentList) {
 
     return (
-        <div className={className}>
 
+        <MemoizedBodyContent className='comment-container'>
             <MemoizedAddComment onSubmit={onComment} />
 
-            <ul>
+            <div className={`comment-stream ${className ? className : ''}`}>
                 {comments.map((comment, index) => (
                     <MemoizedViewComment key={index} comment={comment} />
                 ))}
-            </ul>
-        </div>
+            </div>
+        </MemoizedBodyContent>
     )
 }
 

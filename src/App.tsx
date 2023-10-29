@@ -1,22 +1,15 @@
 import React, { Component, useCallback, useState, } from 'react'
 import './App.css'
-import data, {
-  // comment,
-  // update,
-} from './data'
-import { v4 as uuidv4 } from 'uuid';
-import { MemoizedNewsFeedCard } from './components/organisms/newsfeedCard'
-import { Update, User } from './datatypes/datatypes';
 
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons'
+import { v4 as uuidv4 } from 'uuid';
+import { MemoizedNewsFeed } from './components/template/newsfeed'
+import { Update, User } from './datatypes/datatypes';
 
 import currentUserImage from './assets/images/jarjar.jpg'
 import mockUserImage1 from './assets/images/3po.jpg'
 import mockUserImage2 from './assets/images/b1droid.jpg'
 import mockUserImage3 from './assets/images/r2d2.jpg'
 
-library.add(faCheckSquare, faCoffee)
 
 export function App() {
 
@@ -52,11 +45,11 @@ export function App() {
 
 
   const mockUpdates: Update[] = [
-    { id: uuidv4(), author: mockUser1, title: 'Update 1', text: "Yousa should follow me now, okay? My warning yous: Gungans no like outsiders. Do not 'spect a warm welcome.", comments: [], likes: 0, dislikes: 0, createdDate: "2023-10-21T10:00:00.000Z" },
-    { id: uuidv4(), author: mockUser2, title: 'Update 2', text: "Yousa should follow me now, okay? My warning yous: Gungans no like outsiders. Do not 'spect a warm welcome.", comments: [], likes: 0, dislikes: 0, createdDate: "2023-10-22T14:30:00.000Z" },
-    { id: uuidv4(), author: mockUser3, title: 'Update 3', text: "Yousa should follow me now, okay? My warning yous: Gungans no like outsiders. Do not 'spect a warm welcome.", comments: [], likes: 0, dislikes: 0, createdDate: "2023-10-23T09:15:00.000Z" },
-    { id: uuidv4(), author: mockUser2, title: 'Update 4', text: "Yousa should follow me now, okay? My warning yous: Gungans no like outsiders. Do not 'spect a warm welcome.", comments: [], likes: 0, dislikes: 0, createdDate: "2023-10-24T16:45:00.000Z" },
-    { id: uuidv4(), author: mockUser1, title: 'Update 5', text: "Yousa should follow me now, okay? My warning yous: Gungans no like outsiders. Do not 'spect a warm welcome.", comments: [], likes: 0, dislikes: 0, createdDate: "2023-10-25T11:20:00.000Z" },
+    { id: uuidv4(), author: mockUser1, title: 'Update 1', text: "Yousa should follow me now, okay? My warning yous: Gungans no like outsiders. Do not 'spect a warm welcome.", comments: [], likes: 0, dislikes: 0, createdDate: new Date("2023-10-21T10:00:00.000Z") },
+    { id: uuidv4(), author: mockUser2, title: 'Update 2', text: "Yousa should follow me now, okay? My warning yous: Gungans no like outsiders. Do not 'spect a warm welcome. Yousa should follow me now, okay? My warning yous: Gungans no like outsiders. Do not 'spect a warm welcome.", comments: [], likes: 0, dislikes: 0, createdDate: new Date("2023-10-21T10:00:00.000Z") },
+    { id: uuidv4(), author: mockUser3, title: 'Update 3', text: "Yousa should follow me now, okay? My warning yous: Gungans no like outsiders. Do not 'spect a warm welcome.", comments: [], likes: 0, dislikes: 0, createdDate: new Date("2023-10-21T10:00:00.000Z") },
+    { id: uuidv4(), author: mockUser2, title: 'Update 4', text: "Yousa should follow me now, okay? My warning yous: Gungans no like outsiders. Do not 'spect a warm welcome.", comments: [], likes: 0, dislikes: 0, createdDate: new Date("2023-10-21T10:00:00.000Z") },
+    { id: uuidv4(), author: mockUser1, title: 'Update 5', text: "Yousa should follow me now, okay? My warning yous: Gungans no like outsiders. Do not 'spect a warm welcome. ", comments: [], likes: 0, dislikes: 0, createdDate: new Date("2023-10-21T10:00:00.000Z") },
   ];
 
 
@@ -69,7 +62,7 @@ export function App() {
         author: currentUser,
         title: title,
         text: text,
-        createdDate: new Date().toLocaleString(),
+        createdDate: new Date(),
         comments: [],
         likes: 0,
         dislikes: 0
@@ -80,8 +73,13 @@ export function App() {
   );
 
   const handleAddComment = useCallback(
-    (commentText, updateId) => {
-      const newComment = { id: uuidv4(), text: commentText };
+    (text, updateId) => {
+      const newComment = {
+        id: uuidv4(),
+        author: currentUser,
+        text: text,
+        createdDate: new Date(),
+      };
 
       setUpdates((prevUpdates) => {
         return prevUpdates.map((update) => {
@@ -115,15 +113,12 @@ export function App() {
     );
   };
 
-
   return (
 
     <div className='container'>
 
-      <img src={currentUser.image} alt={`${currentUser.firstname} ${currentUser.lastname}`} />
 
-      {/* Display the newsfeed */}
-      <MemoizedNewsFeedCard
+      <MemoizedNewsFeed
         title={'Jar-Jar'}
         updates={updates}
         onAddUpdate={handleAddUpdate}

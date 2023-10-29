@@ -1,14 +1,14 @@
-.feed-container {
+.update-container {
     justify-content: center;
     align-items: center;
     background-color: transparent;
 }
 
-.feed-title {
+.update-title {
     color: white;
 }
 
-.card-container {
+.update-stream {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
