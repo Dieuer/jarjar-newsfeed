@@ -5,22 +5,22 @@ import { MemoizedTextarea } from '../../atoms/input/textarea';
 type TAddComment = {
     onSubmit: (comment: string) => void;
     className?: string;
+    style?: React.CSSProperties;
 }
-export function AddComment({ onSubmit, className }: TAddComment) {
+export function AddComment({ onSubmit, className, style }: TAddComment) {
 
-    const [comment, setUpdate] = useState<string>('');
-
+    const [comment, setComment] = useState<string>('');
     const handleCommentChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-        setUpdate(event.target.value);
+        setComment(event.target.value);
     };
 
     const handleUpdateSubmit = () => {
         onSubmit(comment)
-        setUpdate('')
+        setComment('')
     }
 
     return (
-        <div className={`add-comment ${className ? className : ''}`}>
+        <div className={`add-comment ${className ? className : ''}`} style={style}>
             <MemoizedTextarea
                 value={comment}
                 placeholder='Comment something...'

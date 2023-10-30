@@ -1,19 +1,29 @@
 import { useState } from 'react';
 
-export const useExpressionReaction = (onUpdateLike: () => void) => {
-    const [expression, setExpression] = useState<'like' | 'dislike' | null>(null);
+export const useExpressionReaction = (onCommentWow: () => void, onCommentAngry: () => void) => {
+    const [reaction, setReaction] = useState<'wow' | 'angry' | null>(null);
 
-    const handleExpression = () => {
-        if (expression !== 'like') {
-            onUpdateLike();
-            setExpression('like');
+    const handleWow = () => {
+        if (reaction !== 'wow') {
+            onCommentWow();
+            setReaction('wow');
         } else {
-            setExpression(null);
+            setReaction(null);
+        }
+    };
+
+    const handleAngry = () => {
+        if (reaction !== 'angry') {
+            onCommentAngry();
+            setReaction('angry');
+        } else {
+            setReaction(null);
         }
     };
 
     return {
-        expression,
-        handleExpression,
+        reaction,
+        handleWow,
+        handleAngry,
     };
 };

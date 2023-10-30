@@ -12,9 +12,12 @@ type TNewsFeedProps = {
   onAddComment: (commentText: string, updateId: string) => void;
   onLikeUpdate: (updateId: string) => void;
   onDislikeUpdate: (updateId: string) => void;
+  onCommentWow: (commentId: string) => void;
+  onCommentAngry: (commentId: string) => void;
+
 }
 
-export function NewsFeed({ title, updates, onAddUpdate, onLikeUpdate, onDislikeUpdate, onAddComment }: TNewsFeedProps) {
+export function NewsFeed({ title, updates, onAddUpdate, onLikeUpdate, onDislikeUpdate, onAddComment, onCommentWow, onCommentAngry }: TNewsFeedProps) {
   return (
     <div className={'update-container'}>
 
@@ -30,6 +33,8 @@ export function NewsFeed({ title, updates, onAddUpdate, onLikeUpdate, onDislikeU
             onAddComment={(comment) => onAddComment(comment, update.id)}
             onUpdateLike={onLikeUpdate}
             onUpdateDislike={onDislikeUpdate}
+            onUpdateWow={onCommentWow}
+            onUpdateAngry={onCommentAngry}
           />
         ))}
       </div>

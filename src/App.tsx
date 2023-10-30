@@ -79,6 +79,8 @@ export function App() {
         author: currentUser,
         text: text,
         createdDate: new Date(),
+        wow: 0,
+        angry: 0,
       };
 
       setUpdates((prevUpdates) => {
@@ -113,6 +115,35 @@ export function App() {
     );
   };
 
+  const handleWowUpdate = (commentId: string) => {
+    setUpdates((prevUpdates) =>
+      prevUpdates.map((update) => {
+        const updatedComments = update.comments.map((comment) => {
+          if (comment.id === commentId) {
+            return { ...comment, wow: comment.wow + 1 };
+          }
+          return comment;
+        });
+        return { ...update, comments: updatedComments };
+      })
+    );
+  };
+
+  const handleAngryUpdate = (commentId: string) => {
+    setUpdates((prevUpdates) =>
+      prevUpdates.map((update) => {
+        const updatedComments = update.comments.map((comment) => {
+          if (comment.id === commentId) {
+            return { ...comment, angry: comment.angry + 1 };
+          }
+          return comment;
+        });
+        return { ...update, comments: updatedComments };
+      })
+    );
+  };
+
+
   return (
 
     <div className='container'>
@@ -125,6 +156,8 @@ export function App() {
         onAddComment={handleAddComment}
         onLikeUpdate={handleLikeUpdate}
         onDislikeUpdate={handleDislikeUpdate}
+        onCommentWow={handleWowUpdate}
+        onCommentAngry={handleAngryUpdate}
       />
     </div>
   )

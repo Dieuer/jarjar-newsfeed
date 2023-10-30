@@ -18,7 +18,7 @@
 }
 
 .user-name {
-    padding-left: 10px;
+    font-weight: bold;
 }
 
 .user-image {
@@ -37,4 +37,22 @@
 
 .metadata {
     display: flex;
+}
+
+.like-button.liked {
+    background-color: green;
+    color: white;
+}
+
+.dislike-button.disliked {
+    background-color: red;
+    color: white;
+}
+
+.user-data {
+    padding-left: 10px;
+}
+
+.update-title {
+    padding-top: 10px;
 }

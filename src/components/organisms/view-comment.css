@@ -6,6 +6,8 @@
     padding-top: 10px;
     border: 2px;
     border-radius: 20px;
+    padding-bottom: 10px;
+    margin-top: 10px;
 }
 
 .add-comment {
@@ -32,4 +34,14 @@
 
 .view-comment .comment-data .user-image {
     width: 60px;
+}
+
+.wow-button.wow {
+    background-color: blue;
+    color: white;
+}
+
+.angry-button.angry {
+    background-color: orange;
+    color: white;
 }

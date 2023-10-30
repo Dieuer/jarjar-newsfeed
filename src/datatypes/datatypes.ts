@@ -26,4 +26,6 @@ export type Comment = {
     author: User
     text: string;
     createdDate: Date;
+    wow: number;
+    angry: number;
 }

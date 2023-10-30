@@ -6,20 +6,27 @@ import { MemoizedBodyContent } from '../../atoms/container/body-content';
 
 type TCommentList = {
     comments: Comment[];
-    onComment: (comment: string) => void;
+    onAddComment: (comment: string) => void;
+    onCommentWow: (commentId: string) => void;
+    onCommentAngry: (commentId: string) => void;
     className?: string;
     style?: React.CSSProperties;
 }
-export function CommentList({ onComment, comments, className }: TCommentList) {
+export function CommentList({ onAddComment, onCommentWow, onCommentAngry, comments, className }: TCommentList) {
 
     return (
 
         <MemoizedBodyContent className='comment-container'>
-            <MemoizedAddComment onSubmit={onComment} />
+            <MemoizedAddComment onSubmit={onAddComment} />
 
             <div className={`comment-stream ${className ? className : ''}`}>
                 {comments.map((comment, index) => (
-                    <MemoizedViewComment key={index} comment={comment} />
+                    <MemoizedViewComment
+                        key={index}
+                        comment={comment}
+                        onUpdateWow={() => onCommentWow(comment.id)}
+                        onUpdateAngry={() => onCommentAngry(comment.id)}
+                    />
                 ))}
             </div>
         </MemoizedBodyContent>
