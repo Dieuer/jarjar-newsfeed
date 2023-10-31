@@ -32,6 +32,7 @@ export function App() {
   }, [currentUser]);
 
   const handleUpdateAction = useCallback((updateId, action: string, value: any) => {
+    
     setUpdates((prevUpdates) => {
       return prevUpdates.map((update) => {
         if (update.id !== updateId) return update;
