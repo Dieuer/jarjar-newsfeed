@@ -1,12 +1,12 @@
 import React from "react";
 
-type TCardFooterProps = {
+type CardFooterProps = {
     text: string;
     className?: string;
     style?: React.CSSProperties;
 }
 
-export function CardText({ text, className, style }: TCardFooterProps) {
+export function CardText({ text, className, style }: CardFooterProps) {
     return (
         <div className={`container-text ${className ? className : ''}`} style={style}>
             {text}

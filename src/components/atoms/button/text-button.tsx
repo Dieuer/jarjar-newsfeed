@@ -2,14 +2,14 @@ import React from "react";
 
 import './text-button.css'
 
-type TCardBodyProps = {
+type CardBodyProps = {
     onClick: () => void;
     text: string;
     className?: string;
     style?: React.CSSProperties;
 }
 
-export function TextButton({ onClick, text, className, style }: TCardBodyProps) {
+export function TextButton({ onClick, text, className, style }: CardBodyProps) {
     return (
         <button className={`text-button ${className ? className : ''}`} onClick={onClick} style={style}>
             {text}

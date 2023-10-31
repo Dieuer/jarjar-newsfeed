@@ -1,12 +1,12 @@
 import React from "react";
 
-type TContainerProps = {
+type ContainerProps = {
     children: React.ReactNode;
     className?: string;
     style?: React.CSSProperties;
 }
 
-export function Container({ children, className, style }: TContainerProps) {
+export function Container({ children, className, style }: ContainerProps) {
     return (
         <div className={`container ${className ? className : ''}`} style={style}>
             {children}

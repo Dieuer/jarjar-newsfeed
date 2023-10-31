@@ -1,19 +1,18 @@
 import React from "react";
-import { Update } from '../../../datatypes/datatypes';
 import { MemoizedIconButton } from "../../atoms/button/icon-button";
 import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 import { useLikeReaction } from "../../../hooks/useLikeReaction";
 
-type TLikeReaction = {
-    update: Update;
+type LikeReactionProps = {
+    updateId: string;
     onUpdateLike: (updateId: string) => void;
     onUpdateDislike: (updateId: string) => void;
 }
 
-export function LikeReaction({ onUpdateLike, onUpdateDislike, update }: TLikeReaction) {
+export function LikeReaction({ onUpdateLike, onUpdateDislike, updateId }: LikeReactionProps) {
     const { reaction, handleLike, handleDislike } = useLikeReaction(
-        () => onUpdateLike(update.id),
-        () => onUpdateDislike(update.id)
+        () => onUpdateLike(updateId),
+        () => onUpdateDislike(updateId)
     );
 
     return (

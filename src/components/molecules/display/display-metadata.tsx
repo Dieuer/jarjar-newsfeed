@@ -2,7 +2,7 @@ import React from "react";
 import { MemoizedUserImage } from "../../atoms/user/image";
 import { MemoizedUserName } from "../../atoms/user/name";
 
-type TDisplayMetatdataProps = {
+type DisplayMetatdataProps = {
     children?: React.ReactNode;
     image: string;
     alt: string;
@@ -13,7 +13,7 @@ type TDisplayMetatdataProps = {
 
 }
 
-export function DisplayMetatdata({ children, image, alt, firstname, lastname, className, style }: TDisplayMetatdataProps) {
+export function DisplayMetatdata({ children, image, alt, firstname, lastname, className, style }: DisplayMetatdataProps) {
 
     return (
 

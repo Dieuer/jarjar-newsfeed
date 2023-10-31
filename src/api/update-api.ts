@@ -1,10 +1,8 @@
 import { Update, User } from "../datatypes/datatypes";
 import { v4 as uuidv4 } from 'uuid';
-
-import currentUserImage from './assets/images/jarjar.jpg'
-import mockUserImage1 from './assets/images/3po.jpg'
-import mockUserImage2 from './assets/images/b1droid.jpg'
-import mockUserImage3 from './assets/images/r2d2.jpg'
+import mockUserImage1 from '../assets/images/3po.jpg'
+import mockUserImage2 from '../assets/images/b1droid.jpg'
+import mockUserImage3 from '../assets/images/r2d2.jpg'
 
 export module UpdateApi {
     export function getAll(): Update[] {

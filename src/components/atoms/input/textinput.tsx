@@ -1,6 +1,6 @@
 import React from "react";
 
-type TTextInput = {
+type TextInputProps = {
     value: string;
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
     placeholder: string;
@@ -8,7 +8,7 @@ type TTextInput = {
     style?: React.CSSProperties;
 }
 
-export function TextInput({ value, onChange, placeholder, className }: TTextInput) {
+export function TextInput({ value, onChange, placeholder, className }: TextInputProps) {
     return (
         <input
             type="text"

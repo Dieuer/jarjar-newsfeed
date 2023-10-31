@@ -1,13 +1,13 @@
-import React, { memo, useState } from 'react'
+import React, { useState } from 'react'
 import { MemoizedTextButton } from '../../atoms/button/text-button';
 import { MemoizedTextarea } from '../../atoms/input/textarea';
 
-type TAddComment = {
+type AddCommentProps = {
     onSubmit: (comment: string) => void;
     className?: string;
     style?: React.CSSProperties;
 }
-export function AddComment({ onSubmit, className, style }: TAddComment) {
+export function AddComment({ onSubmit, className, style }: AddCommentProps) {
 
     const [comment, setComment] = useState<string>('');
     const handleCommentChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {

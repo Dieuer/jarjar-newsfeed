@@ -1,5 +1,5 @@
 import React from 'react'
-import { Comment } from '../../datatypes/datatypes';
+import { User } from '../../datatypes/datatypes';
 import './view-comment.css'
 import { MemoizedDisplayMetadata } from '../molecules/display/display-metadata';
 import { MemoizedBodyContent } from '../atoms/container/body-content';
@@ -8,34 +8,37 @@ import { MemoizedLocalDate } from '../atoms/date/local-date';
 import { MemoizedExpressionReaction } from '../molecules/comment/expression-reaction';
 
 
-type TViewComment = {
-    comment: Comment;
+type ViewCommentProps = {
+    id: string;
+    author: User
+    text: string;
+    createdDate: Date;
     className?: string;
     style?: React.CSSProperties;
-    onUpdateWow: (commentId: string) => void;
-    onUpdateAngry: (commentId: string) => void;
+    onCommentWow: (commentId: string) => void;
+    onCommentAngry: (commentId: string) => void;
 }
-export function ViewComment({ comment, onUpdateWow, onUpdateAngry, className, style }: TViewComment) {
+export function ViewComment({ id, author, text, createdDate, onCommentWow, onCommentAngry, className, style }: ViewCommentProps) {
 
     return (
         <MemoizedBodyContent className={`view-comment ${className ? className : ''}`} style={style}>
             <MemoizedDisplayMetadata
-                image={comment.author.image}
-                alt={comment.author.firstname + comment.author.lastname}
-                firstname={comment.author.firstname}
-                lastname={comment.author.lastname}
+                image={author.image}
+                alt={author.firstname + author.lastname}
+                firstname={author.firstname}
+                lastname={author.lastname}
                 className='comment-data'
             />
 
             <MemoizedBodyContent>
-                <MemoizedCardText text={comment.text} />
-                <MemoizedLocalDate date={comment.createdDate} />
+                <MemoizedCardText text={text} />
+                <MemoizedLocalDate date={createdDate} />
             </MemoizedBodyContent>
 
             <MemoizedExpressionReaction
-                comment={comment}
-                onCommentWow={onUpdateWow}
-                onCommentAngry={onUpdateAngry}
+                commentId={id}
+                onCommentWow={onCommentWow}
+                onCommentAngry={onCommentAngry}
             />
 
         </MemoizedBodyContent >

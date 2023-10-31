@@ -1,23 +1,18 @@
-import React, { memo } from 'react';
+import React from 'react';
 import { MemoizedAddUpdate } from '../molecules/update/add-update';
 import { MemoizedViewUpdate } from '../organisms/view-update';
 import { Update } from '../../datatypes/datatypes';
 
 import './newsfeed.css'
 
-type TNewsFeedProps = {
+type NewsFeedProps = {
   title: string;
   updates: Update[];
   onAddUpdate: (updateTitle: string, updatedText: string) => void;
-  onAddComment: (commentText: string, updateId: string) => void;
-  onLikeUpdate: (updateId: string) => void;
-  onDislikeUpdate: (updateId: string) => void;
-  onCommentWow: (commentId: string) => void;
-  onCommentAngry: (commentId: string) => void;
-
+  onUpdateAction: (updateId: string, action: "like" | "dislike" | "comment" | "wow" | "angry", value?: string) => void;
 }
 
-export function NewsFeed({ title, updates, onAddUpdate, onLikeUpdate, onDislikeUpdate, onAddComment, onCommentWow, onCommentAngry }: TNewsFeedProps) {
+export function NewsFeed({ title, updates, onAddUpdate, onUpdateAction }: NewsFeedProps) {
   return (
     <div className={'update-container'}>
 
@@ -29,12 +24,8 @@ export function NewsFeed({ title, updates, onAddUpdate, onLikeUpdate, onDislikeU
         {updates.map((update) => (
           <MemoizedViewUpdate
             key={update.id}
-            update={update}
-            onAddComment={(comment) => onAddComment(comment, update.id)}
-            onUpdateLike={onLikeUpdate}
-            onUpdateDislike={onDislikeUpdate}
-            onUpdateWow={onCommentWow}
-            onUpdateAngry={onCommentAngry}
+            {...update}
+            onUpdateAction={(action, value) => onUpdateAction(update.id, action, value)}
           />
         ))}
       </div>

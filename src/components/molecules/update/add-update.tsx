@@ -1,18 +1,17 @@
-import React, { memo, useState } from 'react';
+import React, { useState } from 'react';
 import { MemoizedTextButton } from '../../atoms/button/text-button';
 import { MemoizedTextarea } from '../../atoms/input/textarea';
-import { Update } from '../../../datatypes/datatypes';
 import { MemoizedTextInput } from '../../atoms/input/textinput';
 
-type TAddUpdate = {
+type AddUpdateProps = {
   onSubmitUpdate: (title: string, text: string) => void;
   className?: string;
   style?: React.CSSProperties;
 };
 
-export function AddUpdate({ onSubmitUpdate, className, style }: TAddUpdate) {
-  const [title, setTitle] = useState('');
-  const [text, setText] = useState('');
+export function AddUpdate({ onSubmitUpdate, className, style }: AddUpdateProps) {
+  const [title, setTitle] = useState<string>('');
+  const [text, setText] = useState<string>('');
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value);

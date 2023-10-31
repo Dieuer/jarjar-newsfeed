@@ -1,12 +1,12 @@
 import React from "react";
 
-type TCardFooterProps = {
+type CardFooterProps = {
     title: string;
     className?: string;
     style?: React.CSSProperties;
 }
 
-export function CardTitle({ title, className, style }: TCardFooterProps) {
+export function CardTitle({ title, className, style }: CardFooterProps) {
     return (
         <div className={`title ${className ? className : ''}`} style={style}>
             {title}

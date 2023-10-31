@@ -4,14 +4,14 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 import './icon-button.css';
 
-type TIconButtonProps = {
+type IconButtonProps = {
     onClick: () => void;
     icon: IconProp;
     className?: string;
     style?: React.CSSProperties;
 }
 
-export function IconButton({ onClick, icon, className, style }: TIconButtonProps) {
+export function IconButton({ onClick, icon, className, style }: IconButtonProps) {
     return (
         <button className={`icon-button ${className ? className : ''}`} onClick={onClick} style={style}>
             <FontAwesomeIcon icon={icon} />

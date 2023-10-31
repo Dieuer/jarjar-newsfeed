@@ -1,6 +1,6 @@
 import React from "react";
 
-type TTextArea = {
+type TextAreaProps = {
     value: string;
     onChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
     placeholder?: string;
@@ -8,7 +8,7 @@ type TTextArea = {
     style?: React.CSSProperties;
 }
 
-export function Textarea({ value, onChange, placeholder, className, style }: TTextArea) {
+export function Textarea({ value, onChange, placeholder, className, style }: TextAreaProps) {
     return (
         <textarea
             className={`text-area form-control ${className ? className : ''}`} style={style}
