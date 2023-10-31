@@ -43,7 +43,12 @@ export function AddUpdate({ onSubmitUpdate, className, style }: AddUpdateProps) 
         className={className}
       />
 
-      <MemoizedTextButton onClick={handleUpdateSubmit} text="Add update" className={className} />
+      <MemoizedTextButton
+        onClick={handleUpdateSubmit}
+        text="Add update"
+        className={className}
+        disabled={!title || !text}
+      />
     </div>
   );
 }

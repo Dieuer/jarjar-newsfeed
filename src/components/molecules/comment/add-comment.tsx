@@ -28,7 +28,11 @@ export function AddComment({ onSubmit, className, style }: AddCommentProps) {
                 onChange={handleCommentChange}
             />
 
-            <MemoizedTextButton onClick={handleUpdateSubmit} text="Add comment" className={className} />
+            <MemoizedTextButton
+                onClick={handleUpdateSubmit}
+                text="Add comment" className={className}
+                disabled={!comment}
+            />
         </div>
     )
 }

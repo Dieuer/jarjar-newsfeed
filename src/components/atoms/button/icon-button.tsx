@@ -7,13 +7,14 @@ import './icon-button.css';
 type IconButtonProps = {
     onClick: () => void;
     icon: IconProp;
+    disabled?: boolean;
     className?: string;
     style?: React.CSSProperties;
 }
 
-export function IconButton({ onClick, icon, className, style }: IconButtonProps) {
+export function IconButton({ onClick, icon, disabled, className, style }: IconButtonProps) {
     return (
-        <button className={`icon-button ${className ? className : ''}`} onClick={onClick} style={style}>
+        <button className={`icon-button ${className ? className : ''}`} onClick={onClick} disabled={disabled} style={style}>
             <FontAwesomeIcon icon={icon} />
         </button>
     );
